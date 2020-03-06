@@ -103,7 +103,7 @@ def subscribe(connection, address, topic):
     update_topic()
 
 # handle publishing job
-def publish(address, topic, data):
+def publish(address, topic, data, message):
     print(address_str(address) + ' Published: ' + topic + ' ' + data)
     if not has_topic(topic): # if the topic is not existed => add the topic
         add_topic(topic)
@@ -112,7 +112,7 @@ def publish(address, topic, data):
     for subscriber in get_subscribers_of_topic(topic):
         subscriber_connection = subscriber[0]
         subscriber_address = subscriber[1]
-        subscriber_connection.send(data.encode('utf-8')) # send to that connection
+        subscriber_connection.send(message.encode('utf-8')) # send to that connection
         print('Send data to ' + address_str(subscriber_address))
 
 
@@ -133,7 +133,7 @@ def handle_message(connection, address):
         if splitted[0] == 'subscribe':
             subscribe(connection, address, splitted[1])
         elif splitted[0] == 'publish':
-            publish(address, splitted[1], splitted[2])
+            publish(address, splitted[1], splitted[2], message)
 
     connection.close() # close the connection  
     update_subscriber() # remove colsed subscriber connection 
