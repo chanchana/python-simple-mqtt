@@ -13,12 +13,11 @@ if len(sys.argv) < 4:
 
 
 # if there is a specific host and port in argument
-if len(sys.argv) > 1:
-    ip = sys.argv[1]
-    splitted = ip.split(':')
-    host = splitted[0]
-    if len(splitted) > 1: # have specified port
-        port = int(splitted[1])
+ip = sys.argv[1]
+splitted = ip.split(':')
+host = splitted[0]
+if len(splitted) > 1: # have specified port
+    port = int(splitted[1])
 
 # get topic and data from argument
 publish_topic = sys.argv[2]
