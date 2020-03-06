@@ -44,7 +44,7 @@ def same_topic(publisher_topic, subscriber_topic):
     return True
 
 # get all subscribers that subscribe the topic
-def subscirbers_of_topic(topic):
+def subscribers_of_topic(topic):
     target_subscribers = [] # return values
     # loop through all subscribers
     for subscriber in subscribers:
@@ -59,7 +59,7 @@ def subscirbers_of_topic(topic):
 # add topic to dictionary
 def add_topic(topic):
     print('Add topic: ' + topic)
-    topics[topic] = subscirbers_of_topic(topic)
+    topics[topic] = subscribers_of_topic(topic)
 
 # update topic dictionary by looping all subscriber
 def update_topic():
@@ -67,7 +67,7 @@ def update_topic():
     # loop by all keys in the dictionary
     for key in topics:
         # update subscriber list for each key
-        topics[key] = subscirbers_of_topic(key)
+        topics[key] = subscribers_of_topic(key)
 
 # check if the topic existed
 def has_topic(topic):
