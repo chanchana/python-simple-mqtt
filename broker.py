@@ -79,10 +79,12 @@ def get_subscribers_of_topic(topic):
 
 # add new subscriber to list
 def add_subscriber(connection, address, topic):
+    print('Add subscriber: Topic:' + topic + ' Address:' + address_str(address))
     subscribers.append((connection, address, topic))
 
 # remove the subscribers that closed the connection
 def update_subscriber():
+    print('Update subscriber list')
     targets = [] # target to remove
     # loop through all subscribers
     for subscriber in subscribers:
